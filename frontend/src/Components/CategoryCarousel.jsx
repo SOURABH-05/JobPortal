@@ -1,7 +1,6 @@
 import React from 'react'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
-import { Button } from "@/components/ui/button";
-
+import { Button } from './ui/button'
 
 import { setSearchQuery } from '@/redux/jobslice'
 import { useNavigate } from 'react-router-dom'
