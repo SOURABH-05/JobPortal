@@ -17,10 +17,11 @@ const app = express();
  app.use(cookieParser());
 
  const corsOptions ={
-  origin: "*",
+
+    origin:"https://job-portal-wz5u.vercel.app/",
+    credentials: true
  }
  
-
 
  app.use(cors(corsOptions));
  async function main() {
