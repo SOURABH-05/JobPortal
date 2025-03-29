@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import { store } from './redux/store'
 import { Toaster } from "sonner";
 
-import { Toaster } from "@/components/ui/sonner"
+
 import { persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
 
