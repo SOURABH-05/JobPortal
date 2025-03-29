@@ -1,6 +1,6 @@
 import Navbar from '@/shared/Navbar'
 import { Label } from '@radix-ui/react-label'
-import { Input } from "@/components/ui/input"
+
 import React, { useState } from 'react'
 import { RadioGroup } from '@radix-ui/react-radio-group'
 import { Button } from '../ui/button'
@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setLoading } from '@/redux/authslice'
 
 import { Loader2 } from 'lucide-react'
+import { Input } from '../ui/input'
 
 const Signup = () => {
   const navigate = useNavigate(); 
