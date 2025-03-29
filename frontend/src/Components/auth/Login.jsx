@@ -1,74 +1,189 @@
-import Navbar from '@/shared/Navbar'
-import { Label } from '@radix-ui/react-label'
-import { Input } from "@/components/ui/input"
-import axios from 'axios'
-import { toast } from 'sonner'
-import { USER_API_END_POINT } from '@/Constent/contest.js'
-import React, { useState } from 'react'
-import { RadioGroup } from '@radix-ui/react-radio-group'
-import { Button } from '../ui/button'
-import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch,useSelector } from 'react-redux'
-import { Loader2 } from 'lucide-react'
-import { setLoading, setUser } from '@/redux/authslice'
+// import Navbar from '@/shared/Navbar'
+// import { Label } from '@radix-ui/react-label'
+// import { Input } from "@/components/ui/input"
+// import axios from 'axios'
+// import { toast } from 'sonner'
+// import { USER_API_END_POINT } from '@/Constent/contest.js'
+// import React, { useState } from 'react'
+// import { RadioGroup } from '@radix-ui/react-radio-group'
+// import { Button } from '../ui/button'
+// import { Link, useNavigate } from 'react-router-dom'
+// import { useDispatch,useSelector } from 'react-redux'
+// import { Loader2 } from 'lucide-react'
+// import { setLoading, setUser } from '@/redux/authslice'
 
-const Login = () => {
+// const Login = () => {
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const {loading} = useSelector(store=>store.auth)
-    const [input, setInput] = useState({
+//   const dispatch = useDispatch();
+//   const navigate = useNavigate();
+//   const {loading} = useSelector(store=>store.auth)
+//     const [input, setInput] = useState({
         
-        email: "",
-        password: "",
-        role: "",
+//         email: "",
+//         password: "",
+//         role: "",
        
-      });
+//       });
     
-      const changeEventHandler = (e) => {
-        setInput({ ...input, [e.target.name]: e.target.value });
-      };
-    const handleSubmit = async(e) => {
-        e.preventDefault();
+//       const changeEventHandler = (e) => {
+//         setInput({ ...input, [e.target.name]: e.target.value });
+//       };
+//     const handleSubmit = async(e) => {
+//         e.preventDefault();
        
-        setInput({
+//         setInput({
          
-          email: "",
-          password: "",
-          role: "",
+//           email: "",
+//           password: "",
+//           role: "",
           
          
-        });
-        try {
-   dispatch(setLoading(true));
-          const res = await axios.post(`${USER_API_END_POINT}/login`,input, {
-            headers: { "Content-Type":"application/json" },
-            withCredentials: true,
-          });
+//         });
+//         try {
+//    dispatch(setLoading(true));
+//           const res = await axios.post(`${USER_API_END_POINT}/login`,input, {
+//             headers: { "Content-Type":"application/json" },
+//             withCredentials: true,
+//           });
     
-          if (res.data.success) {
-            dispatch(setUser(res.data.user));
-            navigate("/");
-            toast.success(res.data.message);
-          }
-        } catch (error) {
-          toast.error(error.response?.data?.message);
-        }finally{
-              dispatch(setLoading(false))
-            }
-      };
+//           if (res.data.success) {
+//             dispatch(setUser(res.data.user));
+//             navigate("/");
+//             toast.success(res.data.message);
+//           }
+//         } catch (error) {
+//           toast.error(error.response?.data?.message);
+//         }finally{
+//               dispatch(setLoading(false))
+//             }
+//       };
 
+
+//   return (
+//     <>
+//       <Navbar />
+//       <div className='flex items-center justify-center max-w-7xl mx-auto'>
+
+//         <form onSubmit={handleSubmit} className='w-1/2 border border-gray-200 rounded-md p-4 my-10'>
+//           <h1 className='font-bold text-xl mb-5'>Login</h1>
+          
+
+//           <div className='my-2'>
+//             <Label>Email</Label>
+//             <Input
+//               type="email"
+//               onChange={changeEventHandler}
+//               value={input.email}
+//               name="email"
+//               placeholder="Sourabh@gmail.com"
+//             />
+//           </div>
+          
+//           <div className='my-2'>
+//             <Label>Password</Label>
+//             <Input
+//               type="password"
+//               onChange={changeEventHandler}
+//               value={input.password}
+//               name="password"
+//               placeholder="abc@1234a"
+//             />
+//           </div>
+
+//           <div className='flex items-center justify-between'>
+//             <RadioGroup className='flex items-center gap-4 my-5'>
+//               <div className="flex items-center space-x-2">
+//                 <Input type="radio" name="role" checked={input.role === "student"}
+//                   onChange={changeEventHandler} value="student" className="cursor-pointer" />
+//                 <Label htmlFor="r1">Student</Label>
+//               </div>
+//               <div className="flex items-center space-x-2">
+//                 <Input type="radio" name="role" checked={input.role === "recruiter"}
+//                   onChange={changeEventHandler} value="recruiter" className="cursor-pointer" />
+//                 <Label htmlFor="r2">Recruiter</Label>
+//               </div>
+
+//             </RadioGroup>
+            
+//           </div>
+//     <div>
+//      { 
+//                  loading ? <Button className="w-full my-4"> <Loader2 className='mr-2 h-4 w-4 animate-spin'/> Please wait...</Button>  :
+//                  <Button type="submit" className="w-full my-4 bg-black text-white">Sign Up</Button>
+//                  }
+//       <span className='text-sm'>Dont't have an account? <Link to="/signup" className="text-blue-600">signup</Link></span>
+//     </div>
+//         </form>
+
+
+//       </div>
+//     </>
+//   )
+// }
+
+// export default Login
+
+
+
+import React, { useState } from 'react';
+import Navbar from '@/shared/Navbar';
+import { Label } from '@radix-ui/react-label';
+import { Input } from "@/components/ui/input";
+import axios from 'axios';
+import { toast } from 'sonner';
+import { USER_API_END_POINT } from '@/Constants/contest.js';  // ✅ Fixed path
+import { RadioGroup } from '@radix-ui/react-radio-group';
+import { Button } from '@/components/ui/button'; // ✅ Fixed path
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Loader2 } from 'lucide-react';
+import { setLoading, setUser } from '@/redux/authslice'; // ✅ Ensure file exists
+
+const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { loading } = useSelector((store) => store.auth);
+
+  const [input, setInput] = useState({
+    email: "",
+    password: "",
+    role: "",
+  });
+
+  const changeEventHandler = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      dispatch(setLoading(true));
+      const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      });
+
+      if (res.data.success) {
+        dispatch(setUser(res.data.user));
+        navigate("/");
+        toast.success(res.data.message);
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Login failed.");
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
 
   return (
     <>
       <Navbar />
-      <div className='flex items-center justify-center max-w-7xl mx-auto'>
+      <div className="flex items-center justify-center max-w-7xl mx-auto">
+        <form onSubmit={handleSubmit} className="w-1/2 border border-gray-200 rounded-md p-4 my-10">
+          <h1 className="font-bold text-xl mb-5">Login</h1>
 
-        <form onSubmit={handleSubmit} className='w-1/2 border border-gray-200 rounded-md p-4 my-10'>
-          <h1 className='font-bold text-xl mb-5'>Login</h1>
-          
-
-          <div className='my-2'>
+          <div className="my-2">
             <Label>Email</Label>
             <Input
               type="email"
@@ -78,8 +193,8 @@ const Login = () => {
               placeholder="Sourabh@gmail.com"
             />
           </div>
-          
-          <div className='my-2'>
+
+          <div className="my-2">
             <Label>Password</Label>
             <Input
               type="password"
@@ -90,35 +205,41 @@ const Login = () => {
             />
           </div>
 
-          <div className='flex items-center justify-between'>
-            <RadioGroup className='flex items-center gap-4 my-5'>
+          <div className="flex items-center justify-between">
+            <RadioGroup
+              onValueChange={(value) => setInput({ ...input, role: value })}
+              value={input.role}
+              className="flex items-center gap-4 my-5"
+            >
               <div className="flex items-center space-x-2">
-                <Input type="radio" name="role" checked={input.role === "student"}
-                  onChange={changeEventHandler} value="student" className="cursor-pointer" />
+                <RadioGroup.Item value="student" id="r1" className="cursor-pointer" />
                 <Label htmlFor="r1">Student</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <Input type="radio" name="role" checked={input.role === "recruiter"}
-                  onChange={changeEventHandler} value="recruiter" className="cursor-pointer" />
+                <RadioGroup.Item value="recruiter" id="r2" className="cursor-pointer" />
                 <Label htmlFor="r2">Recruiter</Label>
               </div>
-
             </RadioGroup>
-            
           </div>
-    <div>
-     { 
-                 loading ? <Button className="w-full my-4"> <Loader2 className='mr-2 h-4 w-4 animate-spin'/> Please wait...</Button>  :
-                 <Button type="submit" className="w-full my-4 bg-black text-white">Sign Up</Button>
-                 }
-      <span className='text-sm'>Dont't have an account? <Link to="/signup" className="text-blue-600">signup</Link></span>
-    </div>
+
+          <div>
+            {loading ? (
+              <Button className="w-full my-4">
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait...
+              </Button>
+            ) : (
+              <Button type="submit" className="w-full my-4 bg-black text-white">
+                Login
+              </Button>
+            )}
+            <span className="text-sm">
+              Don't have an account? <Link to="/signup" className="text-blue-600">Sign up</Link>
+            </span>
+          </div>
         </form>
-
-
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
