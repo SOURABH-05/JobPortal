@@ -18,7 +18,7 @@ const app = express();
 
  const corsOptions ={
 
-    origin:"https://job-portal-wz5u.vercel.app",
+    origin:"https://jobportalt05.onrender.com",
     credentials: true
  }
  
@@ -36,10 +36,10 @@ const app = express();
   main();
 
  
-  app.use("/user",userRoute)
-  app.use("/company",companyRoute)
-  app.use("/job",jobRoute)
-  app.use("/application",applicationRoute)
+  app.use("/api/v1/user",userRoute)
+  app.use("/api/v1/company",companyRoute)
+  app.use("/api/v1/job",jobRoute)
+  app.use("/api/v1/application",applicationRoute)
 
   // const PORT =8001
  const PORT =process.env.PORT;
