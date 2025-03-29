@@ -1,6 +1,6 @@
 import Navbar from '@/shared/Navbar'
 import { Label } from '@radix-ui/react-label'
-import { Input } from "@/components/ui/input"
+
 import axios from 'axios'
 import { toast } from 'sonner'
 import { USER_API_END_POINT } from '@/Constent/contest.js'
@@ -11,6 +11,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux'
 import { Loader2 } from 'lucide-react'
 import { setLoading, setUser } from '@/redux/authslice'
+import { Input } from '../ui/input'
 
 const Login = () => {
 
