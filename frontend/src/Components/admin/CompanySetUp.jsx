@@ -11,7 +11,7 @@ import { COMPANY_API_END_POINT } from '@/Constent/contest'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoading } from '@/redux/authslice'
 import useGetCompanyByid from '@/Hooks/useGetCompanyByid'
-import { setCompanies } from '@/redux/companyslice'
+
 
 const CompanySetUp = () => {
     const dispatch = useDispatch();
